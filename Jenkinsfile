@@ -59,7 +59,8 @@ pipeline{
          success {   
             echo "========Deploying executed successfully========"
             emailext attachLog: true, body: "<b>Example</b><br>Project: ${env.JOB_NAME}", from: 'sravaninuthanapati15@gmail.com', mimeType: 'text/html', replyTo: '', subject: "Deploy Success CI: Project name -> ${env.JOB_NAME}", to: "sravaninuthanapati15@gmail.com";
-
+            sshagent(['1076af24-fcf6-4ca0-a2f6-e79e16465615']){
+                    bat 'scp -r C:/Users/vscr9/.m2/repository/Java-0.0.1-SNAPSHOT.jar ubuntu@15.207.88.22:/home/ubuntu/artifacts'
          }  
          failure {  
              mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'sravaninuthanapati15@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "sravaninuthanapati15@gmail.com";  
