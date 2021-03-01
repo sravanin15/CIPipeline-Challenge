@@ -60,8 +60,8 @@ pipeline{
             echo "========Deploying executed successfully========"
              mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> Success!! <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: 'sravaninuthanapati15@gmail.com', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "sravaninuthanapati15@gmail.com"; 
            sshagent(['1076af24-fcf6-4ca0-a2f6-e79e16465615']){
-                sh "ssh -o StrictHostKeyChecking=no ubuntu@15.207.88.22  'echo $HOME'"
-                    sh 'scp -r /var/jenkins_home/workspace/awsintegration/target/simplecalculator-0.0.1-SNAPSHOT.jar ubuntu@15.207.88.22:/home/ubuntu/artifacts'
+                sh "ssh -o StrictHostKeyChecking=no ubuntu@35.154.165.223  'echo $HOME'"
+                    sh 'scp -r /var/jenkins_home/workspace/awsintegration/target/simplecalculator-0.0.1-SNAPSHOT.jar ubuntu@35.154.165.223:/home/ubuntu/artifacts'
          }
          }
          failure {  
